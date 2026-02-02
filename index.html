@@ -4,11 +4,10 @@
   <link rel="icon" href="https://symbl-cdn.com/i/webp/0c/f0c7fd9dcb878d4ac26424608addd1.webp" type="image/webp">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>kuroi</title>
+  <title>kuroi - Portfolio & Blog</title>
 
-  <!-- Google AdSense 本番コード（これで自動広告も動く） -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9122221482603316"
-       crossorigin="anonymous"></script>
+         crossorigin="anonymous"></script>
 
   <style>
     :root {
@@ -17,109 +16,139 @@
       --accent: #06b6d4;
       --dark: #1e293b;
       --light: #f8fafc;
-      --glass: rgba(255, 255, 255, 0.1);
+      --glass: rgba(255, 255, 255, 0.08);
+      --rect-radius: 4px; /* 四角形ベースの角の丸み */
     }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
       min-height: 100vh;
       color: var(--light);
+      line-height: 1.6;
     }
-    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+
+    /* 四角形のガラスカード */
     .glass-card {
       background: var(--glass);
       backdrop-filter: blur(20px);
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--rect-radius);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       padding: 2rem;
       margin-bottom: 2rem;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
-    .hero { text-align: center; padding: 4rem 0; }
+
+    .hero { text-align: left; padding: 3rem; border-left: 5px solid var(--primary); }
+    
+    .profile-flex { display: flex; align-items: center; gap: 2rem; }
     .profile-image {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      border-radius: var(--rect-radius);
       object-fit: cover;
-      border: 3px solid rgba(255, 255, 255, 0.3);
-      margin-bottom: 1.5rem;
+      border: 2px solid var(--primary);
     }
-    .name {
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-    .title {
-      font-size: 1.3rem;
-      opacity: 0.9;
-      margin-bottom: 1rem;
-    }
+
+    .name { font-size: 2.5rem; font-weight: 800; letter-spacing: -1px; }
+    .title { font-size: 1.1rem; opacity: 0.7; }
+
+    h2 { margin-bottom: 1.5rem; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); }
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: 1fr 1fr;
       gap: 2rem;
-      margin-top: 2rem;
     }
-    .skill-item { margin-bottom: 1.2rem; }
-    .skill-name {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.4rem;
-      font-size: 0.95rem;
+
+    /* ブログセクション */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
     }
-    .skill-bar {
-      height: 8px;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    .skill-level {
-      height: 100%;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      border-radius: 10px;
-      width: 0;
-      transition: width 1.2s ease;
-    }
-    .btn {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white;
-      padding: 0.9rem 2rem;
-      border: none;
-      border-radius: 50px;
-      font-weight: 600;
-      cursor: pointer;
+
+    .blog-post {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
       transition: all 0.3s ease;
       text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .blog-post:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--accent);
+      transform: translateX(5px);
+    }
+
+    .post-date { font-size: 0.8rem; opacity: 0.5; margin-bottom: 0.5rem; display: block; }
+    .post-title { font-weight: 700; font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .post-excerpt { font-size: 0.9rem; opacity: 0.8; }
+
+    /* スキルバー */
+    .skill-item { margin-bottom: 1.2rem; }
+    .skill-name { display: flex; justify-content: space-between; margin-bottom: 0.4rem; font-size: 0.9rem; }
+    .skill-bar { height: 6px; background: rgba(255, 255, 255, 0.1); border-radius: 0; overflow: hidden; }
+    .skill-level { height: 100%; background: var(--accent); width: 0; transition: width 1.2s cubic-bezier(0.1, 0.5, 0.5, 1); }
+
+    .btn {
+      background: transparent;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: 1px solid var(--primary);
+      border-radius: var(--rect-radius);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
       display: inline-block;
-      margin: 0.5rem;
     }
+
     .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+      background: var(--primary);
+      color: white;
     }
-    .links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-      margin-top: 1rem;
+
+    /* 広告枠 */
+    .ad-container {
+      margin-top: 4rem;
+      padding: 1.5rem;
+      background: rgba(0,0,0,0.3);
+      border: 1px dashed rgba(255,255,255,0.2);
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .grid { grid-template-columns: 1fr; }
+      .profile-flex { flex-direction: column; text-align: center; }
+      .hero { border-left: none; border-top: 5px solid var(--primary); }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Hero -->
-    <section class="hero glass-card">
-      <img src="https://symbl-cdn.com/i/webp/0c/f0c7fd9dcb878d4ac26424608addd1.webp" alt="kuroi" class="profile-image">
-      <h1 class="name">kuroi</h1>
-      <p class="title">Developer / Student</p>
-    </section>
 
-    <!-- Skills & Links -->
+  <div class="container">
+    <header class="hero glass-card">
+      <div class="profile-flex">
+        <img src="https://symbl-cdn.com/i/webp/0c/f0c7fd9dcb878d4ac26424608addd1.webp" alt="kuroi" class="profile-image">
+        <div>
+          <h1 class="name">kuroi</h1>
+          <p class="title">Developer / Student</p>
+        </div>
+      </div>
+    </header>
+
     <div class="grid">
       <section class="glass-card">
-        <h2>Skills</h2>
+        <h2>Technical Skills</h2>
         <div class="skill-item">
           <div class="skill-name"><span>Java</span><span>8%</span></div>
           <div class="skill-bar"><div class="skill-level" data-width="8%"></div></div>
@@ -135,25 +164,44 @@
       </section>
 
       <section class="glass-card">
-        <h2>作ったサイト</h2>
-        <div class="links">
-          <a href="https://kuroi-earthquake.f5.si" target="_blank" class="btn">earthquakelive</a>
-        </div>
+        <h2>Main Projects</h2>
+        <p style="margin-bottom: 1.5rem; opacity: 0.8;">現在公開中のプロジェクト一覧です。</p>
+        <a href="https://kuroi-earthquake.f5.si" target="_blank" class="btn">Launch earthquakelive</a>
       </section>
     </div>
-  </div>
 
-  <!-- ★一番下の広告（ガラス風で超オシャレ）★ -->
-  <div style="margin: 4rem auto 2rem; text-align:center; padding: 2rem; background: rgba(0,0,0,0.2); backdrop-filter: blur(15px); border-top: 1px solid rgba(255,255,255,0.1);">
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-9122221482603316"
-         data-ad-slot="1234567890"   <!-- ←ここだけ後で自分のスロットIDに変えてね！ -->
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+    <section class="glass-card">
+      <h2>Recent Blog Posts</h2>
+      <div class="blog-grid">
+        <a href="#" class="blog-post">
+          <span class="post-date">2024.05.20</span>
+          <div class="post-title">WebサイトのGUIを刷新しました</div>
+          <p class="post-excerpt">よりモダンで角ばったデザインに変更。CSS Gridを活用したレイアウト構成について。</p>
+        </a>
+        <a href="#" class="blog-post">
+          <span class="post-date">2024.05.15</span>
+          <div class="post-title">Pythonでの開発進捗</div>
+          <p class="post-excerpt">現在12%まで習得。次のプロジェクトではAPI連携をメインに実装する予定です。</p>
+        </a>
+        <a href="#" class="blog-post">
+          <span class="post-date">2024.05.10</span>
+          <div class="post-title">Javaの学習記録 #1</div>
+          <p class="post-excerpt">環境構築からHello Worldまで。オブジェクト指向の考え方に苦戦中。</p>
+        </a>
+      </div>
+    </section>
+
+    <div class="ad-container">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-9122221482603316"
+           data-ad-slot="1234567890" 
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
   </div>
 
   <script>
