@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <link rel="icon" href="https://symbl-cdn.com/i/webp/0c/f0c7fd9dcb878d4ac26424608addd1.webp" type="image/webp">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>kuroi - Portfolio & Blog</title>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9122221482603316"
+         crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --primary: #6366f1;
+      --secondary: #8b5cf6;
+      --accent: #06b6d4;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --glass: rgba(255, 255, 255, 0.08);
+      --rect-radius: 4px; /* 四角形ベースの角の丸み */
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+      min-height: 100vh;
+      color: var(--light);
+      line-height: 1.6;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+
+    /* 四角形のガラスカード */
+    .glass-card {
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      border-radius: var(--rect-radius);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero { text-align: left; padding: 3rem; border-left: 5px solid var(--primary); }
+    
+    .profile-flex { display: flex; align-items: center; gap: 2rem; }
+    .profile-image {
+      width: 100px;
+      height: 100px;
+      border-radius: var(--rect-radius);
+      object-fit: cover;
+      border: 2px solid var(--primary);
+    }
+
+    .name { font-size: 2.5rem; font-weight: 800; letter-spacing: -1px; }
+    .title { font-size: 1.1rem; opacity: 0.7; }
+
+    h2 { margin-bottom: 1.5rem; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    /* ブログセクション */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .blog-post {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .blog-post:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--accent);
+      transform: translateX(5px);
+    }
+
+    .post-date { font-size: 0.8rem; opacity: 0.5; margin-bottom: 0.5rem; display: block; }
+    .post-title { font-weight: 700; font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .post-excerpt { font-size: 0.9rem; opacity: 0.8; }
+
+    /* スキルバー */
+    .skill-item { margin-bottom: 1.2rem; }
+    .skill-name { display: flex; justify-content: space-between; margin-bottom: 0.4rem; font-size: 0.9rem; }
+    .skill-bar { height: 6px; background: rgba(255, 255, 255, 0.1); border-radius: 0; overflow: hidden; }
+    .skill-level { height: 100%; background: var(--accent); width: 0; transition: width 1.2s cubic-bezier(0.1, 0.5, 0.5, 1); }
+
+    .btn {
+      background: transparent;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: 1px solid var(--primary);
+      border-radius: var(--rect-radius);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* 広告枠 */
+    .ad-container {
+      margin-top: 4rem;
+      padding: 1.5rem;
+      background: rgba(0,0,0,0.3);
+      border: 1px dashed rgba(255,255,255,0.2);
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .grid { grid-template-columns: 1fr; }
+      .profile-flex { flex-direction: column; text-align: center; }
+      .hero { border-left: none; border-top: 5px solid var(--primary); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header class="hero glass-card">
+      <div class="profile-flex">
+        <img src="https://symbl-cdn.com/i/webp/0c/f0c7fd9dcb878d4ac26424608addd1.webp" alt="kuroi" class="profile-image">
+        <div>
+          <h1 class="name">kuroi</h1>
+          <p class="title">Developer / Student</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="glass-card">
+        <h2>Technical Skills</h2>
+        <div class="skill-item">
+          <div class="skill-name"><span>Java</span><span>8%</span></div>
+          <div class="skill-bar"><div class="skill-level" data-width="8%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>Python</span><span>12%</span></div>
+          <div class="skill-bar"><div class="skill-level" data-width="12%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name"><span>HTML/CSS</span><span>3%</span></div>
+          <div class="skill-bar"><div class="skill-level" data-width="3%"></div></div>
+        </div>
+      </section>
+
+      <section class="glass-card">
+        <h2>Main Projects</h2>
+        <p style="margin-bottom: 1.5rem; opacity: 0.8;">現在公開中のプロジェクト一覧です。</p>
+        <a href="https://kuroi-earthquake.f5.si" target="_blank" class="btn">Launch earthquakelive</a>
+      </section>
+    </div>
+
+    <section class="glass-card">
+      <h2>Recent Blog Posts</h2>
+      <div class="blog-grid">
+        <a href="#" class="blog-post">
+          <span class="post-date">2024.05.20</span>
+          <div class="post-title">WebサイトのGUIを刷新しました</div>
+          <p class="post-excerpt">よりモダンで角ばったデザインに変更。CSS Gridを活用したレイアウト構成について。</p>
+        </a>
+        <a href="#" class="blog-post">
+          <span class="post-date">2024.05.15</span>
+          <div class="post-title">Pythonでの開発進捗</div>
+          <p class="post-excerpt">現在12%まで習得。次のプロジェクトではAPI連携をメインに実装する予定です。</p>
+        </a>
+        <a href="#" class="blog-post">
+          <span class="post-date">2024.05.10</span>
+          <div class="post-title">Javaの学習記録 #1</div>
+          <p class="post-excerpt">環境構築からHello Worldまで。オブジェクト指向の考え方に苦戦中。</p>
+        </a>
+      </div>
+    </section>
+
+    <div class="ad-container">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-9122221482603316"
+           data-ad-slot="1234567890" 
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.skill-level').forEach(bar => {
+        const width = bar.getAttribute('data-width');
+        setTimeout(() => {
+          bar.style.width = width;
+        }, 300);
+      });
+    });
+  </script>
+</body>
+</html>
